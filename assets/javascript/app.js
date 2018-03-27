@@ -83,7 +83,7 @@ function uberQuery(endEstLat, endEstLng){
     sessionStorage.setItem("adventureLevel", adventureLevel);
    
     getLocation();
-    initialChoices();
+    initialChoices(createCategories(sessionStorage.getItem("adventureLevel"))  );
     
     });
     
@@ -184,13 +184,15 @@ function uberQuery(endEstLat, endEstLng){
 
 
     
+
     var initialArray = createCategories(sessionStorage.getItem("adventureLevel"));    
     console.log(initialArray);
     console.log(sessionStorage.getItem("address"));
     function initialChoices() {
+
         $("#initial-categories").prepend("<h2 id='question'>What types of food do you NOT want?</h2>")
 
-        $.each(initialArray, function (index, value){
+        $.each(array, function (index, value){
         console.log(value);
         
         choiceList.push(value);
