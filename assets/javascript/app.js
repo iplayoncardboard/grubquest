@@ -60,8 +60,8 @@ function uberQuery(endEstLat, endEstLng){
     let fullAddress = street + " " + city + " " + state + " " + zip;
 
     
-    let adventureLevel = $("#stars:checked").val();
-    let priceNav = $("#dollars:checked").val(); 
+    var adventureLevel = $("#stars:checked").val();
+    var priceNav = $("#dollars:checked").val(); 
     
     console.log(adventureLevel);
     
@@ -184,25 +184,12 @@ function uberQuery(endEstLat, endEstLng){
 
 
     
-    
-    //Get foursquare categories and search foursquare for items
-    async function getVenueDetails(venueID){
-        let venueToSearch = venueID;
-        let apiString= 'https://api.foursquare.com/v2/venues/'+venueToSearch+'?';
-        const clientID = '&client_id=P4KB5LUTWWYFAH4WWCI0OAA4UVU3NC0LKIKFJABAAAZ5ZBV0';
-        const clientSecret ='&client_secret=VPWEYY3QVF2CU10AKLACJPBIDYR4QIPG2PUUSBY30FZUITVJ';
-        const version = '&v=20170801';
-        let result = await $.ajax({
-            url: apiString+clientID+clientSecret+version,
-            method:'GET'
-        });
-        return result;
-        
-    }
-    
 
- 
-    function initialChoices(array) {
+    var initialArray = createCategories(sessionStorage.getItem("adventureLevel"));    
+    console.log(initialArray);
+    console.log(sessionStorage.getItem("address"));
+    function initialChoices() {
+
         $("#initial-categories").prepend("<h2 id='question'>What types of food do you NOT want?</h2>")
 
         $.each(array, function (index, value){
